@@ -1,0 +1,8 @@
+#.githooks/hooks/prereceive
+#!/bin/sh
+
+while read old_oid new_oid ref_name; do
+    echo "Old oid: $old_oid"
+    echo "new new_oid: $new_oid"
+    echo "current ref_name: $ref_name"
+done

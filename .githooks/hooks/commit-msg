@@ -1,0 +1,13 @@
+#.githooks/hooks/commit-msg
+#!/bin/sh
+
+pattern='^PROJ-[0-9]{1,4}: .+'
+commit_msg_file="$1"
+first_line=$(head -n1 "$commit_msg_file")
+
+if ! printf '%s' "$first_line" | grep -Eq "$pattern"; then
+  echo "Mesaj de commit invalid!"
+  echo "Commit-ul trebuie să înceapă cu: PROJ-<1..4 cifre>: descriere"
+  echo "Exemplu: PROJ-42: corectează validarea formularului"
+  exit 1
+fi
