@@ -7,11 +7,10 @@ echo $CURRENT_BRANCH
 echo $AUTHOR
 pattern="^($AUTHOR)(\([a-z0-9_-]+\))? .{1,30}"
 
- while read -r local_ref local_object_name remote_ref remote_object_name; do
-    echo "$local_ref"
-    echo "$local_object_name"
-    echo "$remote_ref"
-    echo "$remote_object_name"
+ while read -r var1 var2 var3; do
+    echo "$var1"
+    echo "$var2"
+    echo "$var3"
  done
 
 if ! echo "$CURRENT_BRANCH" | grep -Eq "$pattern"; then
