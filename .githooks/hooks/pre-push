@@ -1,0 +1,4 @@
+#.githooks/hooks/prepush
+#!/bin/bash
+
+echo $GIT_COMMITER_NAME
