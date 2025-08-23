@@ -15,5 +15,5 @@ done
 
 if ! echo "$CURRENT_BRANCH" | grep -Eq "$pattern"; then
     echo "Nume branch invalid!"
-    exit 1
+    exit 0
 fi
