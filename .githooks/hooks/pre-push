@@ -1,11 +1,19 @@
-#.githooks/hooks/prepush
+#.githooks/hooks/pre-push
 #!/bin/bash
 echo "test"
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 AUTHOR=$(git config user.name )
 echo $CURRENT_BRANCH
 echo $AUTHOR
-pattern="^(AUTHOR)(\([a-z0-9_-]+\))?: .{1,50}"
+pattern="^($AUTHOR)(\([a-z0-9_-]+\))? .{1,30}"
+
+ while read -r local_ref local_object_name remote_ref remote_object_name; do
+    echo "$local_ref"
+    echo "$local_object_name"
+    echo "$remote_ref"
+    echo "$remote_object_name"
+ done
+
 if ! echo "$CURRENT_BRANCH" | grep -Eq "$pattern"; then
     echo "Nume branch invalid!"
     exit 1
