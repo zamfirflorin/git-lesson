@@ -1,4 +1,12 @@
 #.githooks/hooks/prepush
 #!/bin/bash
-
-echo $GIT_COMMITER_NAME
+echo "test"
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+AUTHOR=$(git config user.name )
+echo $CURRENT_BRANCH
+echo $AUTHOR
+pattern="^(AUTHOR)(\([a-z0-9_-]+\))?: .{1,50}"
+if ! echo "$CURRENT_BRANCH" | grep -Eq "$pattern"; then
+    echo "Nume branch invalid!"
+    exit 1
+fi
